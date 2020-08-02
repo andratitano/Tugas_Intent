@@ -61,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="64dp"
-        android:text="@string/next"
+        android:text="@string/submit"
         android:textColor="#fff"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
