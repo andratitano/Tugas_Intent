@@ -43,12 +43,22 @@ class FragmentParcelable : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_parcelable.setOnClickListener {
+            if (et_nama_parcelable.text.toString().isEmpty() && et_umur_parcelable.text.toString()
+                    .isEmpty()
+            ) {
+                Toast.makeText(
+                    context,
+                    "Masukan Nama dan Umur",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
                 val nama = et_nama_parcelable.text
                 val umur = Integer.parseInt(et_umur_parcelable.text.toString())
                 val parcelName = ParcelName("$nama", umur)
                 val intent = Intent(context, ParcelableActivity::class.java)
                 intent.putExtra("PARCEL_ID", parcelName)
                 startActivity(intent)
+            }
         }
     }
 

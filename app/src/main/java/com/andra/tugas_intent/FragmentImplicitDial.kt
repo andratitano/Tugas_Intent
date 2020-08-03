@@ -45,6 +45,15 @@ class FragmentImplicitDial : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_dial.setOnClickListener {
+            if (et_no_dial.text.toString()
+                    .isEmpty()
+            ) {
+                Toast.makeText(
+                    context,
+                    "Masukan Nomer Tujuan",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
                 val nomer = et_no_dial.text
                 val sendIntent = Intent(Intent.ACTION_DIAL).apply {
                     data = Uri.parse("tel:$nomer")
@@ -53,6 +62,7 @@ class FragmentImplicitDial : Fragment() {
                 if (sendIntent.resolveActivity(packageManager) != null) {
                     startActivity(sendIntent)
                 }
+            }
         }
     }
 

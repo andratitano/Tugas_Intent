@@ -43,12 +43,22 @@ class FragmentSerializable : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_serializable.setOnClickListener {
+            if (et_nama_serializable.text.toString().isEmpty() && et_umur_serializable.text.toString()
+                    .isEmpty()
+            ) {
+                Toast.makeText(
+                    context,
+                    "Masukan Nama dan Umur",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
                 val nama = et_nama_serializable.text
                 val umur = Integer.parseInt(et_umur_serializable.text.toString())
                 val serializeName = SerializeName("$nama", umur)
                 val intent = Intent(context, SerializableActivity::class.java)
                 intent.putExtra("SERIALIZE_ID", serializeName)
                 startActivity(intent)
+            }
         }
     }
 

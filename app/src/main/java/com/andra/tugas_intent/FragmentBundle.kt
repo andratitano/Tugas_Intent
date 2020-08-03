@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_bundle.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,6 +43,15 @@ class FragmentBundle : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_bundle.setOnClickListener {
+            if (et_umur_bundle.text.toString().isEmpty() && et_nama_bundle.text.toString()
+                    .isEmpty()
+            ) {
+                Toast.makeText(
+                    context,
+                    "Masukan Nama dan Umur",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
                 val nama = et_nama_bundle.text
                 val umur = Integer.parseInt(et_umur_bundle.text.toString())
                 val intent = Intent(context, BundleActivity::class.java)
@@ -50,6 +60,7 @@ class FragmentBundle : Fragment() {
                 bundle.putInt("umur", umur)
                 intent.putExtras(bundle)
                 startActivity(intent)
+            }
         }
     }
 
